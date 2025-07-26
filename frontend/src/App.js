@@ -1107,6 +1107,7 @@ const VirtualMarket = () => {
   const [reviews, setReviews] = useState([]);
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [selectedSupplierForReview, setSelectedSupplierForReview] = useState(null);
+  const [showCartView, setShowCartView] = useState(false);
   
   // Filter states
   const [supplierFilters, setSupplierFilters] = useState({
