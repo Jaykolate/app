@@ -231,6 +231,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "FIXED: Cart not loading/displaying items after adding. Added loadCart function to fetch cart from backend on component mount. Updated handleAddToCart to reload cart from backend after adding items for proper synchronization. Cart badge now shows actual cart contents."
+      - working: "NA"
+        agent: "main"
+        comment: "ENHANCED: Added comprehensive cart management system. Created CartView component with detailed cart page, added cart button to header, implemented remove/update cart item functionality. Users can now click cart button to view detailed cart, adjust quantities, and remove items. Added backend endpoints for cart item removal and quantity updates."
 
   - task: "Market-Themed Styling"
     implemented: true
