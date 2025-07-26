@@ -228,6 +228,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "Implemented cart state management, item count display, multi-supplier cart support"
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Cart not loading/displaying items after adding. Added loadCart function to fetch cart from backend on component mount. Updated handleAddToCart to reload cart from backend after adding items for proper synchronization. Cart badge now shows actual cart contents."
 
   - task: "Market-Themed Styling"
     implemented: true
