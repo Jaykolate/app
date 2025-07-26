@@ -1097,6 +1097,121 @@ const SupplierDashboard = () => {
   );
 };
 
+const CartView = ({ cart, onRemoveItem, onUpdateQuantity, onBackToMarket }) => {
+  const handleQuantityChange = (productId, newQuantity) => {
+    if (newQuantity <= 0) {
+      onRemoveItem(productId);
+    } else {
+      onUpdateQuantity(productId, newQuantity);
+    }
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">🛒 Your Cart</h2>
+          <button
+            onClick={onBackToMarket}
+            className="text-blue-600 hover:text-blue-800 flex items-center"
+          >
+            ← Continue Shopping
+          </button>
+        </div>
+
+        {cart.items.length === 0 ? (
+          <div className="text-center py-12">
+            <div className="text-gray-500 text-lg mb-4">Your cart is empty</div>
+            <button
+              onClick={onBackToMarket}
+              className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors"
+            >
+              Start Shopping
+            </button>
+          </div>
+        ) : (
+          <div>
+            {/* Cart Items */}
+            <div className="space-y-4 mb-6">
+              {cart.items.map((item) => (
+                <div key={item.product_id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
+                      <span className="text-white text-xl">🥬</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800">{item.name || 'Product'}</h3>
+                      <p className="text-sm text-gray-600">${item.price_per_unit}/unit</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() => handleQuantityChange(item.product_id, item.quantity - 1)}
+                        className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                      >
+                        -
+                      </button>
+                      <span className="w-12 text-center font-semibold">{item.quantity}</span>
+                      <button
+                        onClick={() => handleQuantityChange(item.product_id, item.quantity + 1)}
+                        className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                      >
+                        +
+                      </button>
+                    </div>
+                    
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-800">
+                        ${(item.quantity * item.price_per_unit).toFixed(2)}
+                      </div>
+                    </div>
+                    
+                    <button
+                      onClick={() => onRemoveItem(item.product_id)}
+                      className="text-red-600 hover:text-red-800 p-2"
+                      title="Remove item"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Cart Summary */}
+            <div className="border-t border-gray-200 pt-4">
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-lg font-semibold text-gray-800">Total Items:</span>
+                <span className="text-lg font-semibold text-gray-800">{cart.items.length}</span>
+              </div>
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-xl font-bold text-gray-800">Total Amount:</span>
+                <span className="text-xl font-bold text-green-600">${cart.total_amount.toFixed(2)}</span>
+              </div>
+              
+              <div className="flex space-x-4">
+                <button
+                  onClick={onBackToMarket}
+                  className="flex-1 bg-gray-200 text-gray-800 py-3 px-6 rounded-md hover:bg-gray-300 transition-colors"
+                >
+                  Continue Shopping
+                </button>
+                <button
+                  className="flex-1 bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors"
+                >
+                  Proceed to Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const VirtualMarket = () => {
   const [suppliers, setSuppliers] = useState([]);
   const [selectedSupplier, setSelectedSupplier] = useState(null);
