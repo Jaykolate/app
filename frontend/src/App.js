@@ -560,7 +560,7 @@ const SupplierDashboard = () => {
   const [showCreateStall, setShowCreateStall] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { token } = useAuth();
+  const { token, logout, user } = useAuth();
 
   // New product form state
   const [newProduct, setNewProduct] = useState({
