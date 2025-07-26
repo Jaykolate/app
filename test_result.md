@@ -234,6 +234,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "ENHANCED: Added comprehensive cart management system. Created CartView component with detailed cart page, added cart button to header, implemented remove/update cart item functionality. Users can now click cart button to view detailed cart, adjust quantities, and remove items. Added backend endpoints for cart item removal and quantity updates."
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Product names not showing in cart and removed emergent branding. Updated CartItem model to include product name, modified get_cart endpoint to enrich cart items with product names from database. Removed emergent badge from HTML and updated page title to 'MicroMarket - Digital Wholesale Marketplace'."
 
   - task: "Market-Themed Styling"
     implemented: true
