@@ -1268,24 +1268,8 @@ const VirtualMarket = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
 
-      // Update local cart state
-      const newItem = { ...cartItem, name: product.name };
-      const existingItemIndex = cart.items.findIndex(item => item.product_id === product.id);
-      
-      if (existingItemIndex >= 0) {
-        const updatedItems = [...cart.items];
-        updatedItems[existingItemIndex].quantity += 1;
-        setCart({
-          items: updatedItems,
-          total_amount: updatedItems.reduce((sum, item) => sum + (item.quantity * item.price_per_unit), 0)
-        });
-      } else {
-        const updatedItems = [...cart.items, newItem];
-        setCart({
-          items: updatedItems,
-          total_amount: updatedItems.reduce((sum, item) => sum + (item.quantity * item.price_per_unit), 0)
-        });
-      }
+      // Reload cart from backend to ensure synchronization
+      await loadCart();
 
       alert('Item added to cart!');
     } catch (error) {
