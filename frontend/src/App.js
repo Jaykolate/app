@@ -1131,7 +1131,10 @@ const VirtualMarket = () => {
     loadSuppliers();
     loadNotifications();
     initializeDemoData();
-  }, [supplierFilters]);
+    if (token) {
+      loadCart();
+    }
+  }, [supplierFilters, token]);
 
   useEffect(() => {
     if (selectedSupplier) {
@@ -1139,6 +1142,18 @@ const VirtualMarket = () => {
       loadSupplierReviews(selectedSupplier.id);
     }
   }, [selectedSupplier, productFilters]);
+
+  const loadCart = async () => {
+    try {
+      const response = await axios.get(`${API}/cart`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setCart(response.data);
+    } catch (error) {
+      console.error('Error loading cart:', error);
+      // Keep empty cart state if error
+    }
+  };
 
   const initializeDemoData = async () => {
     try {
