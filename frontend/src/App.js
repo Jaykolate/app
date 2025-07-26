@@ -1395,7 +1395,14 @@ const VirtualMarket = () => {
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {!selectedSupplier ? (
+        {showCartView ? (
+          <CartView 
+            cart={cart}
+            onRemoveItem={handleRemoveFromCart}
+            onUpdateQuantity={handleUpdateCartItem}
+            onBackToMarket={handleBackToMarketFromCart}
+          />
+        ) : !selectedSupplier ? (
           <div>
             {/* Market Overview */}
             <div className="text-center mb-8">
