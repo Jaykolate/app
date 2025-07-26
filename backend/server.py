@@ -475,6 +475,65 @@ async def add_to_cart(cart_item: CartItem, current_user: User = Depends(get_curr
     await db.carts.replace_one({"vendor_id": current_user.id}, cart_obj.dict())
     return {"message": "Item added to cart"}
 
+@api_router.delete("/cart/remove/{product_id}")
+async def remove_from_cart(product_id: str, current_user: User = Depends(get_current_user)):
+    cart = await db.carts.find_one({"vendor_id": current_user.id})
+    
+    if not cart:
+        raise HTTPException(status_code=404, detail="Cart not found")
+    
+    cart_obj = Cart(**cart)
+    
+    # Find and remove the item
+    item_to_remove = None
+    for item in cart_obj.items:
+        if item.product_id == product_id:
+            item_to_remove = item
+            break
+    
+    if not item_to_remove:
+        raise HTTPException(status_code=404, detail="Item not found in cart")
+    
+    cart_obj.items.remove(item_to_remove)
+    
+    # Recalculate total
+    cart_obj.total_amount = sum(item.quantity * item.price_per_unit for item in cart_obj.items)
+    cart_obj.updated_at = datetime.utcnow()
+    
+    await db.carts.replace_one({"vendor_id": current_user.id}, cart_obj.dict())
+    return {"message": "Item removed from cart"}
+
+@api_router.put("/cart/update/{product_id}")
+async def update_cart_item(product_id: str, quantity: int, current_user: User = Depends(get_current_user)):
+    cart = await db.carts.find_one({"vendor_id": current_user.id})
+    
+    if not cart:
+        raise HTTPException(status_code=404, detail="Cart not found")
+    
+    cart_obj = Cart(**cart)
+    
+    # Find and update the item
+    item_to_update = None
+    for item in cart_obj.items:
+        if item.product_id == product_id:
+            item_to_update = item
+            break
+    
+    if not item_to_update:
+        raise HTTPException(status_code=404, detail="Item not found in cart")
+    
+    if quantity <= 0:
+        cart_obj.items.remove(item_to_update)
+    else:
+        item_to_update.quantity = quantity
+    
+    # Recalculate total
+    cart_obj.total_amount = sum(item.quantity * item.price_per_unit for item in cart_obj.items)
+    cart_obj.updated_at = datetime.utcnow()
+    
+    await db.carts.replace_one({"vendor_id": current_user.id}, cart_obj.dict())
+    return {"message": "Cart updated"}
+
 # Orders Routes
 @api_router.get("/orders/my-orders", response_model=List[Order])
 async def get_my_orders(current_user: User = Depends(get_current_user)):
