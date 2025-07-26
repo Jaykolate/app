@@ -1296,6 +1296,40 @@ const VirtualMarket = () => {
     setReviews([]);
   };
 
+  const handleRemoveFromCart = async (productId) => {
+    try {
+      await axios.delete(`${API}/cart/remove/${productId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      await loadCart();
+      alert('Item removed from cart!');
+    } catch (error) {
+      console.error('Error removing from cart:', error);
+      alert('Failed to remove item from cart');
+    }
+  };
+
+  const handleUpdateCartItem = async (productId, quantity) => {
+    try {
+      await axios.put(`${API}/cart/update/${productId}?quantity=${quantity}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      await loadCart();
+    } catch (error) {
+      console.error('Error updating cart:', error);
+      alert('Failed to update cart');
+    }
+  };
+
+  const handleViewCart = () => {
+    setShowCartView(true);
+    setSelectedSupplier(null);
+  };
+
+  const handleBackToMarketFromCart = () => {
+    setShowCartView(false);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-yellow-50 flex items-center justify-center">
