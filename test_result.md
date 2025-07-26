@@ -261,11 +261,11 @@ metadata:
 
 test_plan:
   current_focus:
-    - "User Authentication System"
-    - "Supplier Management API"
+    - "Supplier Dashboard Logout Button"
+    - "Authentication UI Components"
     - "Virtual Market Map Interface"
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
