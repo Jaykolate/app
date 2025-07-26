@@ -1357,6 +1357,14 @@ const VirtualMarket = () => {
                   ← Back to Market
                 </button>
               )}
+              {showCartView && (
+                <button
+                  onClick={handleBackToMarketFromCart}
+                  className="ml-6 text-blue-600 hover:text-blue-800 flex items-center market-nav"
+                >
+                  ← Back to Market
+                </button>
+              )}
             </div>
             
             <div className="flex items-center space-x-4">
@@ -1367,9 +1375,12 @@ const VirtualMarket = () => {
                     onMarkRead={handleMarkNotificationRead}
                   />
                   <span className="text-sm text-gray-600">Welcome, {user.name}</span>
-                  <div className="bg-green-100 px-2 py-1 rounded-full text-xs">
-                    {cart.items.length} items (${cart.total_amount.toFixed(2)})
-                  </div>
+                  <button
+                    onClick={handleViewCart}
+                    className="bg-green-100 hover:bg-green-200 px-3 py-1 rounded-full text-xs transition-colors border border-green-300 hover:border-green-400"
+                  >
+                    🛒 {cart.items.length} items (${cart.total_amount.toFixed(2)})
+                  </button>
                   <button
                     onClick={logout}
                     className="text-sm text-red-600 hover:text-red-800 border border-red-300 hover:border-red-400 px-3 py-1 rounded-md transition-colors"
