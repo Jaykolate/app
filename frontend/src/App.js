@@ -282,7 +282,7 @@ const VirtualMarket = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({ items: [], total_amount: 0 });
   const [loading, setLoading] = useState(true);
-  const { user, token } = useAuth();
+  const { user, token, logout } = useAuth();
 
   useEffect(() => {
     loadSuppliers();
