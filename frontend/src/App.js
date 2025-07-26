@@ -773,6 +773,17 @@ const SupplierDashboard = () => {
               {myStall && <p className="text-sm text-gray-600">{myStall.stall_name}</p>}
             </div>
             <div className="flex items-center space-x-4">
+              {user && (
+                <div className="flex items-center space-x-4">
+                  <span className="text-sm text-gray-600">Welcome, {user.name}</span>
+                  <button
+                    onClick={logout}
+                    className="text-sm text-red-600 hover:text-red-800 border border-red-300 hover:border-red-400 px-3 py-1 rounded-md transition-colors"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
               <button
                 onClick={() => setShowAddProduct(true)}
                 className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
