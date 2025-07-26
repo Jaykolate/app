@@ -441,7 +441,16 @@ async def get_cart(current_user: User = Depends(get_current_user)):
         empty_cart = Cart(vendor_id=current_user.id)
         await db.carts.insert_one(empty_cart.dict())
         return empty_cart
-    return Cart(**cart)
+    
+    cart_obj = Cart(**cart)
+    
+    # Enrich cart items with product names
+    for item in cart_obj.items:
+        product = await db.products.find_one({"id": item.product_id})
+        if product:
+            item.name = product.get("name", "Unknown Product")
+    
+    return cart_obj
 
 @api_router.post("/cart/add")
 async def add_to_cart(cart_item: CartItem, current_user: User = Depends(get_current_user)):
