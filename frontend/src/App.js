@@ -1011,6 +1011,63 @@ const SupplierDashboard = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
                 />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+                <div className="space-y-3">
+                  <input
+                    type="url"
+                    value={newProduct.image_url}
+                    onChange={(e) => setNewProduct({...newProduct, image_url: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
+                    placeholder="Enter image URL or choose from presets below..."
+                  />
+                  
+                  {/* Image Preview */}
+                  {newProduct.image_url && (
+                    <div className="mt-2">
+                      <img
+                        src={newProduct.image_url}
+                        alt="Product preview"
+                        className="w-20 h-20 object-cover rounded-md border"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
+                  
+                  {/* Preset Image Options */}
+                  <div>
+                    <p className="text-xs text-gray-600 mb-2">Quick select preset images:</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[
+                        { name: 'Vegetables', url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=400' },
+                        { name: 'Fruits', url: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400' },
+                        { name: 'Spices', url: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400' },
+                        { name: 'Herbs', url: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400' }
+                      ].map((preset) => (
+                        <button
+                          key={preset.name}
+                          type="button"
+                          onClick={() => setNewProduct({...newProduct, image_url: preset.url})}
+                          className="relative group"
+                        >
+                          <img
+                            src={preset.url}
+                            alt={preset.name}
+                            className="w-full h-12 object-cover rounded border hover:border-green-500 transition-colors"
+                          />
+                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 rounded flex items-center justify-center">
+                            <span className="text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                              {preset.name}
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
               <button
                 type="submit"
                 className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
