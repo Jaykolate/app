@@ -241,6 +241,18 @@ frontend:
         agent: "main"
         comment: "Applied market bazaar theme with wooden stall colors, hover animations, gradient backgrounds"
 
+  - task: "Supplier Dashboard Logout Button"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Added logout button to supplier dashboard header. Updated SupplierDashboard component to include logout functionality and user welcome message, matching vendor dashboard styling."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
