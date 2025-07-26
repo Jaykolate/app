@@ -1089,6 +1089,7 @@ const SupplierDashboard = () => {
                 Add Product
               </button>
             </form>
+            </div>
           </div>
         </div>
       )}
