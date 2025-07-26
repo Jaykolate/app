@@ -504,7 +504,7 @@ async def remove_from_cart(product_id: str, current_user: User = Depends(get_cur
     return {"message": "Item removed from cart"}
 
 @api_router.put("/cart/update/{product_id}")
-async def update_cart_item(product_id: str, quantity: int, current_user: User = Depends(get_current_user)):
+async def update_cart_item(product_id: str, quantity: int = Query(...), current_user: User = Depends(get_current_user)):
     cart = await db.carts.find_one({"vendor_id": current_user.id})
     
     if not cart:
