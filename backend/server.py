@@ -139,6 +139,7 @@ class CartItem(BaseModel):
     supplier_id: str
     quantity: int
     price_per_unit: float
+    name: Optional[str] = None  # Product name will be populated in responses
 
 class Cart(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
