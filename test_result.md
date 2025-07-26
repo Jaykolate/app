@@ -252,6 +252,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "Added logout button to supplier dashboard header. Updated SupplierDashboard component to include logout functionality and user welcome message, matching vendor dashboard styling."
+      - working: "NA"
+        agent: "main"
+        comment: "Fixed Add Product modal scrolling issue. Made modal content scrollable with max-height constraint and sticky header. Modal now properly scrolls when content exceeds viewport height."
 
 metadata:
   created_by: "main_agent"
