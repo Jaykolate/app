@@ -1,53 +1,55 @@
-# 🥦 FreshFinds – Hyperlocal Produce Procurement Platform
+# 🛒 MicroMarket – Hyperlocal Produce Supply Platform for Street Vendors
 
-FreshFinds is a hyperlocal digital procurement platform designed to empower street food vendors by enabling them to pool daily produce orders and purchase in bulk directly from trusted local suppliers. The platform ensures cost-effective, quality-assured access to fresh fruits and vegetables while helping suppliers expand their customer base efficiently.
+**MicroMarket** is a hyperlocal B2B platform that connects **street food vendors** with **verified fresh produce suppliers**. It streamlines the daily procurement of fruits and vegetables by providing a mobile-first solution with real-time inventory, smart ordering suggestions, and timely delivery tracking.
 
----
-
-## 🚀 Features
-
-### ✅ For Street Food Vendors:
-- 🧺 **Basket-Based Ordering**: Group orders by vendors in the same neighborhood to get bulk discounts.
-- 🤝 **Mohalla Mandi Grouping**: Auto-cluster vendors in the same area to form a buying group.
-- 📈 **Smart Inventory Suggestions**: AI suggests what to order based on past purchases and trends.
-- 🔔 **Order Alerts**: Get reminders before order cutoff times.
-- 💸 **Order History & Invoice Tracking**: Vendors can view past purchases and download receipts.
-
-### ✅ For Suppliers:
-- 📦 **Supplier Dashboard**: Manage incoming group orders and update availability in real-time.
-- 📊 **Predictive Analytics**: See demand forecasts based on location and time trends.
-- 🔄 **Inventory Sync**: Easily update available stock and pricing.
-- 📍 **Geo-based Order Management**: Suppliers can see which neighborhoods have pending orders.
+Unlike traditional group-buying models, **MicroMarket empowers individual vendors** to access reliable, quality produce from trusted suppliers in their locality without visiting the wholesale market.
 
 ---
 
-## 💡 Why FreshFinds?
+## 💡 Problem It Solves
 
-Street food vendors often face issues like:
-- High retail prices for fresh produce
-- Time wasted in daily market visits
-- Limited negotiation power
+Street vendors currently face:
+- Daily effort in procuring vegetables from crowded local markets
+- No transparency in pricing and produce quality
+- Inconsistent supply or poor vendor-supplier communication
 
-FreshFinds solves this by enabling **group buying power**, **data-driven suggestions**, and **transparent supply chains** — all from a mobile or desktop dashboard.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React.js / TailwindCSS
-- **Backend**: Node.js + Express.js
-- **Database**: MongoDB Atlas
-- **ML**: Python (scikit-learn / TensorFlow for inventory predictions)
-- **Hosting**: Vercel (Frontend) / Render or Railway (Backend)
-- **Authentication**: JWT + Role-based Access
-
-
---
-
-## 📸 Screenshots
-
-> Add screenshots of vendor dashboard, supplier panel, order page, etc.
+**MicroMarket eliminates these issues** by digitizing the fresh produce supply chain with a neighborhood-first focus.
 
 ---
 
+## 🌟 Key Features
+
+### 🧑‍🍳 For Street Food Vendors
+- 🧺 **Basket-Based Ordering** – Build your daily order from supplier catalog
+- ⏰ **Timely Delivery Updates** – Get notifications on delivery status
+- 🥕 **Verified Supplier Access** – Source only from quality-verified suppliers
+- 🧠 **Smart Order Suggestions** – Recommends items based on your purchase history
+- 📑 **Digital Receipts & History** – Access all past orders and invoices
+
+### 🚚 For Suppliers
+- 📦 **Supplier Inventory Dashboard** – Add/update produce, prices, and availability
+- 📍 **Vendor Location View** – See vendor zones and optimize dispatch
+- 📊 **Daily Order Analytics** – Insights into frequent demand and vendor behavior
+
+---
+
+## 🛠 Tech Stack
+
+| Layer        | Technology                       |
+|--------------|----------------------------------|
+| **Frontend** | React.js + TailwindCSS           |
+| **Backend**  | Node.js + Express.js             |
+| **Database** | MongoDB Atlas                    |
+| **Deployment** | Vercel (Frontend), Render (Backend) |
+
+
+---
+UPcoming
+## 🤖 AI/ML Features
+
+- 📈 **Order Prediction** – Suggests optimal quantity for each item
+- 📊 **Demand Forecasting** – Helps suppliers stock up in advance
+- 🧠 **Vendor Behavior Profiling** – Understand each vendor’s ordering patterns
+
+---
 
